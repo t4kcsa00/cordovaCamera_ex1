@@ -1,3 +1,5 @@
+'Write an application that uses cordova camera plugin and is able to display a image in mobile devices screen that is taken by the camera or the image is taken from cameras photo library.' 
+
 # cordovaCamera_ex1
 About the  camera plugin in cordova
 
