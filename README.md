@@ -1,7 +1,7 @@
 # cordovaCamera_ex1
 About the  camera plugin in cordova
 
-step 1:npm install -g cordova
+step 1:npm install -g cordova</br>
 step2:cordova create CordovaCameraApp com.example.CordovaCameraApp CordovaCameraApp
 step3:cd CordovaCameraApp
 step4:cordova platform add android
