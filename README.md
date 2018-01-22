@@ -12,5 +12,8 @@ If application is running properly then we can install camera plugin with step7<
 
 step7:cordova plugin add cordova-plugin-camera</br>
 
-<h3>Screenshot of Camera App</h3>
-<img width="100" height="100" src="screenshot/image1.jpeg"></img>
+<h3>Screenshot of Application</h3>
+<img width="200" height="200" src="screenshot/image1.jpeg"></img>
+<img width="200" height="200" src="screenshot/camera.jpeg"></img>
+<img width="200" height="200" src="screenshot/image2.jpeg"></img>
+<img width="200" height="200" src="screenshot/image3.jpeg"></img>
