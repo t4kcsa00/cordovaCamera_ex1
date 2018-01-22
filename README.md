@@ -11,3 +11,6 @@ step6:cordova emulate android or try with "\CordovaCameraApp\platforms\android\a
 If application is running properly then we can install camera plugin with step7</br>
 
 step7:cordova plugin add cordova-plugin-camera</br>
+
+<h3>Screenshot of Camera App</h3>
+<img width="100" height="100" src="screenshot/image1.jpeg"></img>
