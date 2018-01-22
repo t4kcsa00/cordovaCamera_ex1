@@ -9,6 +9,9 @@
   "installed_plugins": {
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "com.example.CordovaCameraApp"
+    },
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "com.example.CordovaCameraApp"
     }
   },
   "dependent_plugins": {}

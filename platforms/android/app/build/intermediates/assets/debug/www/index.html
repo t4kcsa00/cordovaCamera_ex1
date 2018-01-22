@@ -28,22 +28,72 @@
             * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
                 * Enable inline JS: add 'unsafe-inline' to default-src
         -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+        <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'"/>
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
         <link rel="stylesheet" type="text/css" href="css/index.css">
-        <title>Hello World</title>
+        <title>CameraApp</title>
     </head>
-    <body>
+    <body >
         <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
+            <button id = "cameraTakePicture">TAKE PICTURE</button>           
+            <button id="showPicture">Photo Collection</button>
+            <img id="image"></img>
         </div>
+    
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">
+            document.getElementById("cameraTakePicture").addEventListener 
+                ("click", cameraTakePicture);              
+            document.getElementById("showPicture").addEventListener 
+                ("click", getPictureFromPhotoGallery);         
+            //to take the picture from camera
+            function cameraTakePicture() {                
+                navigator.camera.getPicture(onSuccess, onFail, {  
+                    quality: 50, 
+                    destinationType: Camera.DestinationType.FILE_URI,
+                    targetWidth: 300,
+                    targetHeight: 300,
+                    correctOrientation: true,
+                    saveToPhotoAlbum: true 
+                });  
+                //if the picture is taken successfully
+                function onSuccess() { 
+                    var imageId = document.getElementById("image");
+                    if (imageId.style.display === "block") {
+                        imageId.style.display = "none";
+                    } 
+                    alert('saved image in photogallery');
+                }  
+                //if the picture is failed to capture   
+                function onFail(message) { 
+                    alert('Failed! ' + message); 
+                } 
+            }
+            //to get picture from photogallery
+            function getPictureFromPhotoGallery(){
+                navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
+                        allowEdit: true,
+                        correctOrientation: true,
+                        destinationType: Camera.DestinationType.FILE_URI,
+                        sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+                        targetWidth:500,
+                        targetHeight:500,
+                    });
+                //after the user choose the picture 
+                function onSuccess(imageURL) {
+                    var imageId = document.getElementById("image");
+                    imageId.style.display = "block"
+                    var image = document.getElementById('image');
+                    image.src = imageURL;
+                }
+                //if the user denied to select the picture
+                function onFail(message) {
+                    alert('Failed! ' + message);
+                }
+            }
+        </script>
     </body>
 </html>

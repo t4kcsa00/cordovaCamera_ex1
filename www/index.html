@@ -33,17 +33,67 @@
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
         <link rel="stylesheet" type="text/css" href="css/index.css">
-        <title>CarodovaCameraApp</title>
+        <title>CameraApp</title>
     </head>
-    <body>
-        <div class="app">            
-            <div>
-                <button id="setPhoto">Take a Photo</button>
-                <button id="getPhoto">Show Photo</button>
-            </div>
+    <body >
+        <div class="app">
+            <button id = "cameraTakePicture">TAKE PICTURE</button>           
+            <button id="showPicture">Photo Collection</button>
+            <img id="image"></img>
         </div>
+    
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript" src="js/camera.js"></script>
+        <script type="text/javascript">
+            document.getElementById("cameraTakePicture").addEventListener 
+                ("click", cameraTakePicture);              
+            document.getElementById("showPicture").addEventListener 
+                ("click", getPictureFromPhotoGallery);         
+            //to take the picture from camera
+            function cameraTakePicture() {                
+                navigator.camera.getPicture(onSuccess, onFail, {  
+                    quality: 50, 
+                    destinationType: Camera.DestinationType.FILE_URI,
+                    targetWidth: 300,
+                    targetHeight: 300,
+                    correctOrientation: true,
+                    saveToPhotoAlbum: true 
+                });  
+                //if the picture is taken successfully
+                function onSuccess() { 
+                    var imageId = document.getElementById("image");
+                    if (imageId.style.display === "block") {
+                        imageId.style.display = "none";
+                    } 
+                    alert('saved image in photogallery');
+                }  
+                //if the picture is failed to capture   
+                function onFail(message) { 
+                    alert('Failed! ' + message); 
+                } 
+            }
+            //to get picture from photogallery
+            function getPictureFromPhotoGallery(){
+                navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
+                        allowEdit: true,
+                        correctOrientation: true,
+                        destinationType: Camera.DestinationType.FILE_URI,
+                        sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+                        targetWidth:500,
+                        targetHeight:500,
+                    });
+                //after the user choose the picture 
+                function onSuccess(imageURL) {
+                    var imageId = document.getElementById("image");
+                    imageId.style.display = "block"
+                    var image = document.getElementById('image');
+                    image.src = imageURL;
+                }
+                //if the user denied to select the picture
+                function onFail(message) {
+                    alert('Failed! ' + message);
+                }
+            }
+        </script>
     </body>
 </html>
