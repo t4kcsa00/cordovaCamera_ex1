@@ -35,7 +35,7 @@
         <link rel="stylesheet" type="text/css" href="css/index.css">
         <title>CameraApp</title>
     </head>
-    <body >
+    <body onload="camera()">
         <div class="app">
             <button id = "cameraTakePicture">TAKE PICTURE</button>           
             <button id="showPicture">Photo Collection</button>
@@ -93,6 +93,11 @@
                 function onFail(message) {
                     alert('Failed! ' + message);
                 }
+            }
+
+            function camera(){
+                var imageId = document.getElementById("image");
+                imageId.style.display = "none";
             }
         </script>
     </body>

@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Mon Jan 22 14:15:05 EET 2018
+#Mon Jan 22 14:54:48 EET 2018
 25.file=C\:\\CordovaCameraApp\\platforms\\android\\app\\build\\intermediates\\assets\\debug\\www\\cordova-js-src\\plugin\\android\\app.js
 25.base=C\:\\CordovaCameraApp\\platforms\\android\\app\\build\\intermediates\\assets\\debug
 22.set=ASSET
