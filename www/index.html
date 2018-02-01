@@ -60,12 +60,13 @@
                     saveToPhotoAlbum: true 
                 });  
                 //if the picture is taken successfully
-                function onSuccess() { 
-                    var imageId = document.getElementById("image");
-                    if (imageId.style.display === "block") {
-                        imageId.style.display = "none";
-                    } 
+                function onSuccess(imageURL) { 
                     alert('saved image in photogallery');
+                    var imageId = document.getElementById("image");  
+                    imageId.style.display = "block"
+                    var image = document.getElementById('image');
+                    image.src = imageURL;                 
+                    
                 }  
                 //if the picture is failed to capture   
                 function onFail(message) { 
